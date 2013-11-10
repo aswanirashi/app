@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/install-button.css">
+	<link rel="stylesheet" href="css/layouts.css">
+	<style type="text/css">
+		canvas { border: 0px solid #9C9898; }
+
+		fieldset.elist, input[type="text"], textarea, select, option,
+		fieldset.elist ul, fieldset.elist > legend, fieldset.elist
+		input[type="text"], fieldset.elist > legend:after {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		input[type="text"] {
+			padding: 0 20px;
+		}
+
+		textarea {
+			width: 500px;
+			height: 200px;
+			padding: 20px;
+		}
+
+		textarea, input[type="text"], fieldset.elist
+		ul, select, fieldset.elist > legend {
+			border: 2px #cccccc solid;
+			border-radius: 10px;
+		}
+
+		input[type="text"], fieldset.elist,
+		select, fieldset.elist > legend {
+			height: 32px;
+			font-family: Tahoma;
+			font-size: 14px;
+		}
+
+		input[type="text"]:hover,
+		textarea:hover,
+		select:hover,
+		fieldset.elist:hover >
+		legend {
+			background-color:
+			#ddddff;
+		}
+
+		select {
+			padding: 4px 20px;
+		}
+
+		option {
+			height: 30px;
+			padding: 5px
+			4px;
+		}
+
+		option:not(:checked),
+		textarea:focus {
+			background-color:
+			#ffcccc;
+		}
+
+		fieldset.elist
+		>
+		legend:after,
+		fieldset.elist
+		label {
+			height:
+			28px;
+		}
+
+		input[type="text"],
+		fieldset.elist
+		{
+			width:
+			316px;
+		}
+
+		input[type="text"]:focus,
+		textarea:focus,
+		select:focus,
+		fieldset.elist
+		>
+		legend
+		{
+			border:
+			2px
+			#ccaaaa
+			solid;
+		}
+
+		fieldset
+		{
+			border:
+			2px
+			#af3333
+			solid;
+			border-radius:
+			10px;
+		}
+	</style>
+  </head>
+  <body>
+    <!-- Use this installation button to install locally without going
+         through the marketpace (see app.js) -->
+    <!-- <button id="install-btn">Install</button>     -->
+	<x-app>
+      <x-listview class="list" data-first="true" >
+        <header>
+          <button class="refresh">Refresh</button>
+          <h1>Tasks</h1>
+          <button class="add">+</button>
+          <button data-view="x-view.about">About</button>
+        </header>
+      </x-listview>
+
+      <x-view class="detail" >
+        <header>
+          <h1></h1>
+          <button data-view="x-view.edit">Edit</button>
+        </header>
+        <p class="desc"></p>
+		<p class="date"></p>
+	   <canvas id="object"></canvas>
+        <button type="submit" class="add">Fill the Jar</button>
+		<div id="result" style="font-size:0.75em"></div>
+	</div>
+      </x-view>
+	
+      <x-view class="edit">
+	  <h1>Edit</h1>
+	  <fieldset>
+		  <legend>Add a Task</legend>
+        <div class="field">Task Name: <input type="text" name="title" /></div>
+        <div class="field">Description: <input type="text" name="desc" /></div>
+		<div class="field">
+				<fieldset>
+				    <legend>Task to be done in Interval Time</legend>
+					<input type="text" name="inter" />
+					<select name="zxcvb">
+						<option value="s" />Seconds</option>
+						<option value="m"/>Minutes</option>
+						<option value="h" />Hours</option>
+						<option value="d" />Days</option>
+				   </select>
+				</fieldset>
+			</div>	
+		<div class="field">
+				<fieldset>
+				    <legend>Total time for Task Completion</legend>
+					<input type="text" name="total" />
+					<select name="qwerty">
+						<option value="s" />Seconds</option>
+					    <option value="m"/>Minutes</option>
+					    <option value="h" />Hours</option>
+					    <option value="d" />Days</option>
+					</select>
+				</fieldset>
+			</div>			
+				<button type="submit" class="add">Get, Set, Go!</button>
+			</fieldset>
+			</x-view>
+	  <x-view class="about">
+	  <h1>About</h1>
+	  <p> Jar of Life helps make your life productive. Add a task which you plan to execute, over some period of days. For each day that you do your task, say writing, or going to the gym, you get to fill the jar for that day. After a few days you'll start seeing the jar non-empty and filling. <br>Just keep at it and the jar will keep brimming every day. You'll like seeing that jar fill, especially when you get a few weeks under your belt. Your only job next is to not let the jar leak, which it will, if you skip a day.<br> The emphasis is on NOT LETTING IT LEAK.
+It works because it isn't the one-shot pushes that get us where we want to go, it is the consistent daily action that builds extraordinary outcomes.
+</p>
+<p>
+You may have heard inch by inch anything's a cinch. Inch by inch does work if you can move an inch every day.Daily action builds habits. It gives you practice and will make you an expert in a short time.</p>
+<p>If you don't let it leak, you'll start to spot opportunities you otherwise wouldn't. Small improvements accumulate into large improvements rapidly because daily action provides compounding interest.</p>
+
+<p>Don't let it leak!</p>
+	  </x-view>
+	  
+    </x-app>
+
+    <!-- Using require.js, a module system for javascript, include the
+         js files. This loads "main.js", which in turn can load other
+         files, all handled by require.js:
+         http://requirejs.org/docs/api.html#jsfiles -->
+    <script type="text/javascript" src="js/x-tag.js"></script>
+    <script type="text/javascript" data-main="js/init.js" src="js/lib/require.js"></script>
+	<script type="text/javascript" language="JavaScript">
+		function HidePart(d) { 
+			document.getElementById(d).style.display ="none";  }
+		function ShowPart(d) {
+			document.getElementById(d).style.display = "block"; }
+			function CheckboxChecked(){
+				var x=document.getElementById("mySelect").selectedIndex;
+			if(x==0) { ShowPart(0); }
+			else  { HidePart(0); }
+		}
+	</script>
+
+</body>
+</html>
